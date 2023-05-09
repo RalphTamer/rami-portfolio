@@ -1,124 +1,216 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
+import localFont from "next/font/local"
+import { CSSProperties } from "react"
 
-const inter = Inter({ subsets: ['latin'] })
+import "swiper/css"
+import SwiperWrapper from "@/components/SwiperWrapper"
+import { useRouter } from "next/router"
 
 export default function Home() {
+  const darkBlueColor = "#104d6c"
+  const socialsStyle: CSSProperties = {
+    textAlign: "center",
+    color: darkBlueColor,
+    fontWeight: "600"
+  }
+  const socialsClassName =
+    "flex flex-col items-center max-md:text-[8px] text-[22px]"
+  const myWorkImages: string[] = []
+  for (let i = 0; i <= 17; i++) {
+    if (i === 0) {
+      continue
+    }
+    let number
+    if (i < 10) {
+      number = `0${i}`
+    } else {
+      number = i
+    }
+    const imageName = `My-Work-Website-Layout-${number}.png`
+    myWorkImages.push(imageName)
+  }
+  const router = useRouter()
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/pages/index.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
+    <div>
+      <div className="relative">
+        <img
+          src={`/images/BKG.png`}
+          style={{
+            objectFit: "contain"
+          }}
+        />
+        <div className="absolute" style={{ top: 0 }}>
+          <div className="" style={{ width: "100vw" }}>
+            <div className="flex justify-center pt-4">
+              <img
+                className="max-md:w-[60px] md:w-[200px]"
+                src="/images/TopLogo.png"
+                style={{ objectFit: "contain" }}
+              />
+            </div>
+            <img
+              className="pt-8"
+              src="/images/Header.png"
+              style={{ objectFit: "contain", width: "75vw" }}
             />
-          </a>
+            <div className="flex justify-center">
+              <img
+                className="pt-8"
+                src="/images/AboutMe.png"
+                style={{ objectFit: "contain", width: "80vw" }}
+              />
+            </div>
+            <div className="">
+              <img
+                className="pt-2"
+                src="/images/WhatYK.png"
+                style={{ objectFit: "contain", width: "30vw" }}
+              />
+            </div>
+            <div className="flex justify-center mt-[-2%]">
+              <img
+                className=""
+                src="/images/Iceberg.png"
+                style={{ objectFit: "contain", width: "70vw" }}
+              />
+            </div>
+            <div className="flex justify-end mt-[-20%]">
+              <img
+                className=""
+                src="/images/WhatYDK.png"
+                style={{ objectFit: "contain", width: "30vw" }}
+              />
+            </div>
+          </div>
+        </div>
+        <div className="flex justify-center">
+          <img
+            className=""
+            src="/images/MyWork.png"
+            style={{ objectFit: "contain", width: "80vw" }}
+          />
+        </div>
+        <div className="flex mt-[-2%] justify-center">
+          <img
+            className=""
+            src="/images/Diamonds.png"
+            style={{
+              objectFit: "contain",
+              width: "70vw"
+            }}
+          />
+        </div>
+        {/* line */}
+        <div className="flex justify-center pt-2">
+          <div
+            style={{
+              width: "80vw",
+              height: "1px",
+              backgroundColor: "rgb(119 153 171)"
+            }}
+          />
+        </div>
+        {/* swiper goes here */}
+        <SwiperWrapper>
+          {myWorkImages.map((image) => {
+            return <img src={`/images/my-work/${image}`} />
+          })}
+        </SwiperWrapper>
+        <div className="flex justify-center">
+          <img
+            className=""
+            src="/images/ContactMe.png"
+            style={{ objectFit: "contain", width: "80vw" }}
+          />
+        </div>
+        <div className="space-y-2">
+          <div className="flex justify-center">
+            <img
+              className="py-2"
+              src="/images/Ready.png"
+              style={{ objectFit: "contain", width: "30vw" }}
+            />
+          </div>
+          <div className="mx-[10vw]">
+            <div className="grid grid-cols-12">
+              <div
+                className="col-span-4 pr-3 "
+                style={{ borderRight: `1px solid ${darkBlueColor}` }}
+              >
+                <img src="/images/Map.png" />
+                <div
+                  className="max-md:text-[10px] md:text-[36px] max-md:leading-[11px] md:leading-[36px] pt-1"
+                  style={{
+                    textAlign: "center",
+                    fontWeight: "600",
+                    color: darkBlueColor
+                  }}
+                >
+                  Beirut , Lebanon
+                </div>
+              </div>
+              <div
+                className="col-span-4 flex flex-col items-center justify-between space-y-1"
+                style={{ borderRight: `1px solid ${darkBlueColor}` }}
+              >
+                <div className={socialsClassName}>
+                  <img src="/images/insta.png" className="max-md:w-[18px]" />
+                  <div style={socialsStyle}>@ramyfch</div>
+                </div>
+
+                <div className={socialsClassName}>
+                  <img src="/images/Mail.png" className="max-md:w-[18px]" />
+                  <div className="max-md:leading-[8px] md:leading-[22px]">
+                    <div style={socialsStyle}>ramy_f_chrabieh</div>
+                    <div style={socialsStyle}>@hotmail.com</div>
+                  </div>
+                </div>
+                <div className={socialsClassName}>
+                  <img src="/images/Phone.png" className="max-md:w-[18px]" />
+                  <div style={socialsStyle}>+961 79 145 441</div>
+                </div>
+              </div>
+              <div className="col-span-4 flex flex-col justify-around mx-2">
+                <div
+                  style={{
+                    fontWeight: "600",
+                    color: darkBlueColor
+                  }}
+                  className="max-md:text-[12px] md:text-[48px] max-md:leading-[12px] md:leading-[48px]"
+                >
+                  LIKE WHAT YOU SEE?
+                </div>
+                <div className="flex items-center">
+                  <div
+                    className="max-md:text-[12px] md:text-[48px] max-md:leading-[12px] md:leading-[48px]"
+                    style={{
+                      color: darkBlueColor
+                    }}
+                  >
+                    Use this Glyph as a sign & email me!
+                  </div>
+                  <a
+                    className="max-md:w-[40px] md:w-[250px]"
+                    style={{ aspectRatio: 1 }}
+                    href="mailto:rami_f_chrabieh@hotmail.com"
+                  >
+                    <img
+                      className=" md:w-[200px]"
+                      src="/images/RedirectSquare.png"
+                    />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="flex justify-center">
+            <img
+              className="py-2"
+              src="/images/WhenYouAre.png"
+              style={{ objectFit: "contain", width: "40vw" }}
+            />
+          </div>
         </div>
       </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700/10 after:dark:from-sky-900 after:dark:via-[#0141ff]/40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`${inter.className} mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p
-            className={`${inter.className} m-0 max-w-[30ch] text-sm opacity-50`}
-          >
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`${inter.className} mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p
-            className={`${inter.className} m-0 max-w-[30ch] text-sm opacity-50`}
-          >
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`${inter.className} mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p
-            className={`${inter.className} m-0 max-w-[30ch] text-sm opacity-50`}
-          >
-            Discover and deploy boilerplate example Next.js&nbsp;projects.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`${inter.className} mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p
-            className={`${inter.className} m-0 max-w-[30ch] text-sm opacity-50`}
-          >
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+    </div>
   )
 }
