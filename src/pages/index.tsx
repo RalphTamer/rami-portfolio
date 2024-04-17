@@ -1,29 +1,22 @@
-import { CSSProperties } from "react"
+import { CSSProperties } from "react";
 
-import "swiper/css"
-import SwiperWrapper from "../components/SwiperWrapper"
-import { useRouter } from "next/router"
-import Image from "next/image"
+import "swiper/css";
+import SwiperWrapper from "../components/SwiperWrapper";
 
 export default function Home() {
-  const darkBlueColor = "#104d6c"
+  const darkBlueColor = "#104d6c";
   const socialsStyle: CSSProperties = {
     textAlign: "center",
     color: darkBlueColor,
-    fontWeight: "600"
-  }
+    fontWeight: "600",
+  };
   const socialsClassName =
-    "flex flex-col items-center max-md:text-[8px] text-[22px]"
-  const myWorkImages: string[] = []
-  for (let i = 0; i <= 19; i++) {
-    if (i === 0) {
-      continue
-    }
-
-    const imageName = `My-Work-${i}.jpg`
-    myWorkImages.push(imageName)
+    "flex flex-col items-center max-md:text-[8px] text-[22px]";
+  const myWorkImages: string[] = [];
+  for (let i = 1; i <= 19; i++) {
+    const imageName = `My-Work-${i}.jpg`;
+    myWorkImages.push(imageName);
   }
-  const router = useRouter()
   return (
     <div>
       <div className="relative">
@@ -31,7 +24,7 @@ export default function Home() {
           alt="image"
           src={`/images/BKG.jpg`}
           style={{
-            objectFit: "contain"
+            objectFit: "contain",
           }}
         />
         <div className="absolute" style={{ top: 0 }}>
@@ -99,7 +92,7 @@ export default function Home() {
             src="/images/Diamonds.png"
             style={{
               objectFit: "contain",
-              width: "70vw"
+              width: "70vw",
             }}
           />
         </div>
@@ -114,7 +107,7 @@ export default function Home() {
                 src={`/images/my-work/${image}`}
                 className="swiper-lazy"
               />
-            )
+            );
           })}
         </SwiperWrapper>
         <div className="flex justify-center">
@@ -146,7 +139,7 @@ export default function Home() {
                   style={{
                     textAlign: "center",
                     fontWeight: "600",
-                    color: darkBlueColor
+                    color: darkBlueColor,
                   }}
                 >
                   Beirut , Lebanon
@@ -189,7 +182,7 @@ export default function Home() {
                 <div
                   style={{
                     fontWeight: "600",
-                    color: darkBlueColor
+                    color: darkBlueColor,
                   }}
                   className="max-md:text-[12px] md:text-[48px] max-md:leading-[12px] md:leading-[48px]"
                 >
@@ -199,7 +192,7 @@ export default function Home() {
                   <div
                     className="max-md:text-[12px] md:text-[48px] max-md:leading-[12px] md:leading-[48px]"
                     style={{
-                      color: darkBlueColor
+                      color: darkBlueColor,
                     }}
                   >
                     Use this Glyph as a sign & email me!
@@ -230,5 +223,5 @@ export default function Home() {
         </div>
       </div>
     </div>
-  )
+  );
 }
